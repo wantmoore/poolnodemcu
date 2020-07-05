@@ -1,3 +1,4 @@
+#PoolNodeMCU ESPHome config
 esphome:
   name: poolnodemcu
   platform: ESP8266
