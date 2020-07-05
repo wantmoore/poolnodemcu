@@ -11,6 +11,7 @@ There is a jumper up at the top to control whether you want 3.3 or 5V to that VC
 - NodeMCU (HiLetsGo)
 - ADS1115
 - Pololu Mini-Switches
+- 10k Thermistors
 - 10k Resistors
 - 4 pin male/female connectors
 - Power Switch
@@ -19,6 +20,15 @@ There is a jumper up at the top to control whether you want 3.3 or 5V to that VC
 - 12V Power Supply
 - Enclosure
 
-## Schematic
+## External Components
+This is how the logic on the pump/motor side works, taken directly from the manual of the Century V-Green 165.
+![vgreen165 schematic](https://user-images.githubusercontent.com/1414156/86533740-47182c00-bea1-11ea-9fdd-54c8ffac3baa.png)
 
-## PCB Layout/Gerber
+![vgreen165 controller](https://user-images.githubusercontent.com/1414156/86533790-8ba3c780-bea1-11ea-81df-e61b920463bf.png)
+
+## Schematic
+![poolnodemcu schematic](https://user-images.githubusercontent.com/1414156/86533869-30260980-bea2-11ea-9fc8-db5c8036633a.png)
+
+## PCB Layout
+![poolnodemcu pcb](https://user-images.githubusercontent.com/1414156/86533942-ba6e6d80-bea2-11ea-8fc6-e9c50956ed82.png)
+
