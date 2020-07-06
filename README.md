@@ -1,4 +1,7 @@
 # poolnodemcu
+
+This is a work-in-progress...
+
 PoolNodeMCU uses GPIO output pins of a NodeMCU to control preset pump steps (motor speeds) as well as heater control via a dry contact. Pololu 12v high-side switches take 3.3V GPIO output signals from the NodeMCU and switch a +12V signal (provided by the pump). The switched +12V goes to input pins of Century Variable Speed motor to tell it which pre-programmed speed to run (Four programmable steps STEP1, STEP2, STEP3 and OVERRIDE). Another pair of GPIO pins control a set of relays, one of whichturns the Hayward H250 pool heater off/on. I'm using three 10k thermistors for reading intake water temp, output water temp, and ambient temp inside the NodeMCU enclosure.
 
 The custom PCB wasn't REALLY necessary, but at $25 for 5 boards, I couldn't stop myself. The final product is much neater/cleaner than I could've ever done with wires and jumpers on a breadboard/protoboard. The PCB design is somewhat custom to my component choices, but could pretty easily be modified for use by anyone looking for a more 'industrial' breakout board for the NodeMCU GPIO pins. D0 is already available at pins 2 and 4 of P5 and P6. D1 and D2 can be jumpered to P5 and P6 as well by connecting the SCL and/or SDA pins to the "outside" mounting hole for the 10K resistors (R1-R4). To get access to GPIO pins D5-D8, jumper across CTRL and VOUT pins of each Pololu switch (U2/U3/U4/U5) to connect P4 pins 1-4.
