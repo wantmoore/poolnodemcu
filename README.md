@@ -12,7 +12,7 @@ In addition to those GPIO pins, there are several accessory loctions for 3V3, 5V
 - [NodeMCU](https://www.amazon.com/dp/B010N1SPRK/ref=cm_sw_em_r_mt_dp_U_UXDaFbYY7MGBK)
 - [ADS1115 ADC](https://www.amazon.com/dp/B01DLHKMO2/ref=cm_sw_em_r_mt_dp_U_9WDaFbYQ7GVFV)
 - [Pololu Mini-Switches](https://www.pololu.com/product/2808/)
-- [Pool Temperature Probe](https://www.amazon.com/dp/B001DO18FS/ref=cm_sw_em_r_mt_dp_U_oWDaFbMWCSZ86) or [10k Thermistors](https://www.amazon.com/dp/B01MZ6Y336/ref=cm_sw_em_r_mt_dp_U_zTDaFbTBXMGS3)
+- [Pentair Temperature Probe](https://www.amazon.com/dp/B001DO18FS/ref=cm_sw_em_r_mt_dp_U_oWDaFbMWCSZ86) or [NTC Temperature Sensor](https://www.amazon.com/dp/B01MZ6Y336/ref=cm_sw_em_r_mt_dp_U_zTDaFbTBXMGS3)
 - [10k Resistors](https://www.amazon.com/dp/B0792M83JH/ref=cm_sw_em_r_mt_dp_U_MYDaFbBH0YKBG)
 - [Relay](https://www.amazon.com/dp/B00LW15F42/ref=cm_sw_em_r_mt_dp_U_paEaFbSS3NDZ3) (Heater dry contact control)
 - 4 pin Terminal Blocks [Male](https://lcsc.com/product-detail/Pluggable-System-Terminal-Block_Ningbo-Kangnex-Elec-WJ2EDGVC-5-08-4P_C8436.html) and [Female](https://lcsc.com/product-detail/Pluggable-System-Terminal-Block_Ningbo-Kangnex-Elec-WJ2EDGK-5-08-4P_C71372.html)
@@ -20,7 +20,7 @@ In addition to those GPIO pins, there are several accessory loctions for 3V3, 5V
 - [Various Header Pins/Sockets](https://www.amazon.com/dp/B0775BRB6B/ref=cm_sw_em_r_mt_dp_U_j0DaFbPHE3QDS)
 - 5V Power Supply (for NodeMCU)
 - 12V Power Supply (for pump control)
-- Hookup Wire (I used HVAC/thermostat wire)
+- Hookup Wire for the outside connections(HVAC/thermostat wire or sprinkler control cable)
 - Enclosure
 
 ## External Components
