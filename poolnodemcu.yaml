@@ -1,4 +1,3 @@
-#PoolNodeMCU ESPHome config
 esphome:
   name: poolnodemcu
   platform: ESP8266
@@ -9,15 +8,15 @@ wifi:
   password: !secret wifi_password
   fast_connect: on
   manual_ip:
-    static_ip: 192.168.1.25
-    gateway: 192.168.1.1
+    static_ip: 172.27.1.80
+    gateway: 172.27.1.1
     subnet: 255.255.255.0
-    dns1: 192.168.1.1
+    dns1: 172.27.1.1
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Poolnodemcu Fallback Hotspot"
-    password: !secret fallback_wifi_password
+    ssid: ${devicename}
+    password: !secret esphome_fallback_password
 
 captive_portal:
 
@@ -26,10 +25,10 @@ logger:
 
 # Enable Home Assistant API
 api:
-  password: !secret api_password
+  password: !secret esphome_api_password
 
 ota:
-  password: !secret ota_password
+  password: !secret esphome_ota_password
 
 switch:
   - platform: gpio
@@ -44,8 +43,8 @@ switch:
 
   - platform: gpio
     pin: D4
-    name: "Spare Relay"
-    id: "spare_d4"
+    name: "SWCG"
+    id: "swcg_d4"
 
   - platform: gpio
     pin: D5
@@ -74,6 +73,67 @@ switch:
     id: "pump_ovrd_d8"
     interlock: *pump_steps_interlock
     interlock_wait_time: 500ms
+    
+## Step 1 + SWCG
+  - platform: template
+    name: "Step 1 with SWCG"
+    lambda: |-
+      if (id(pump_step1_d5).state) {
+        return true;
+      } else {
+        return false;
+      }
+    turn_on_action:
+      - switch.turn_on: swcg_d4
+      - switch.turn_on: pump_step1_d5
+    turn_off_action:
+      - switch.turn_off: swcg_d4
+      - switch.turn_off: pump_step1_d5    
+## Step 2 + SWCG
+  - platform: template
+    name: "Step 2 with SWCG"
+    lambda: |-
+      if (id(pump_step2_d6).state) {
+        return true;
+      } else {
+        return false;
+      }
+    turn_on_action:
+      - switch.turn_on: swcg_d4
+      - switch.turn_on: pump_step2_d6
+    turn_off_action:
+      - switch.turn_off: swcg_d4
+      - switch.turn_off: pump_step2_d6
+## Step 3 + SWCG
+  - platform: template
+    name: " Step 3 with SWCG"
+    lambda: |-
+      if (id(pump_step3_d7).state) {
+        return true;
+      } else {
+        return false;
+      }
+    turn_on_action:
+      - switch.turn_on: swcg_d4
+      - switch.turn_on: pump_step3_d7
+    turn_off_action:
+      - switch.turn_off: swcg_d4
+      - switch.turn_off: pump_step3_d7
+## Override + SWCG
+  - platform: template
+    name: " Step 4 OVRD with SWCG"
+    lambda: |-
+      if (id(pump_ovrd_d8).state) {
+        return true;
+      } else {
+        return false;
+      }
+    turn_on_action:
+      - switch.turn_on: swcg_d4
+      - switch.turn_on: pump_ovrd_d8
+    turn_off_action:
+      - switch.turn_off: swcg_d4
+      - switch.turn_off: pump_ovrd_d8
 
 i2c:
   scl: D1
@@ -110,13 +170,13 @@ sensor:
       reference_resistance: 10.0kOhm
     name: A2 Temperature
 
-#  - platform: ntc
-#    sensor: a3_resistance_value
-#    calibration:
-#      b_constant: 3642.74
-#      reference_temperature: 20.2°C
-#      reference_resistance: 12.8kOhm
-#    name: A3 Temperature    
+  - platform: ntc
+    sensor: a3_resistance_value
+    calibration:
+      b_constant: 3642.74
+      reference_temperature: 20.2°C
+      reference_resistance: 12.8kOhm
+    name: A3 Temperature    
 
 # start source data sensors
 # ADS_A0 Resistance
@@ -168,28 +228,27 @@ sensor:
     update_interval: never    
     
 # ADS_A3 Resistance
-#  - platform: resistance
-#    id: a3_resistance_value
-#    sensor: a3_raw_value
-#    configuration: UPSTREAM
-#    resistor: 10.0kOhm
-#    name: A3 Resistance Sensor
+  - platform: resistance
+    id: a3_resistance_value
+    sensor: a3_raw_value
+    configuration: UPSTREAM
+    resistor: 10.0kOhm
+    name: A3 Resistance Sensor
 
 # ADS_A3 Raw Value
-#  - platform: ads1115
-#    id: a3_raw_value
-#    multiplexer: "A3_GND"
-#    gain: 4.096
-#    name: "ADS A3-GND"
-#    update_interval: never
+  - platform: ads1115
+    id: a3_raw_value
+    multiplexer: "A3_GND"
+    gain: 4.096
+    name: "ADS A3-GND"
+    update_interval: never
 # end source sensors
     
 interval:
-  - interval: 15s
+  - interval: 30s
     then:
       - switch.turn_on: thermistor_switch
       - component.update: a0_raw_value
       - component.update: a1_raw_value
       - component.update: a2_raw_value
-#      - component.update: a3_raw_value
       - switch.turn_off: thermistor_switch
