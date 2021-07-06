@@ -23,6 +23,10 @@ In addition to those GPIO pins, there are several accessory loctions for 3V3, 5V
 - Hookup Wire for the outside connections(HVAC/thermostat wire or sprinkler control cable)
 - Enclosure
 
+##Installed Project
+![poolnodemcu_v1](https://user-images.githubusercontent.com/1414156/124680081-a2ee0a00-de93-11eb-9326-f96653a3f3dd.jpeg)
+
+
 ## External Components
 This is how the logic on the pump/motor side works, taken directly from the manual of the Century V-Green 165.
 ![vgreen165 schematic](https://user-images.githubusercontent.com/1414156/86533740-47182c00-bea1-11ea-9fdd-54c8ffac3baa.png)
