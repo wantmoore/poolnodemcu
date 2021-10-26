@@ -23,8 +23,14 @@ In addition to those GPIO pins, there are several accessory loctions for 3V3, 5V
 - Hookup Wire for the outside connections(HVAC/thermostat wire or sprinkler control cable)
 - Enclosure
 
-##Installed Project
+## Installed Project
 ![poolnodemcu_v1](https://user-images.githubusercontent.com/1414156/124680081-a2ee0a00-de93-11eb-9326-f96653a3f3dd.jpeg)
+
+DIY temperature sensor made from a PVC Tee, adapter and screw-in plug
+![IMG_3473](https://user-images.githubusercontent.com/1414156/138919447-d8006176-1d68-4d1c-9218-c87cf54afa85.jpeg)
+
+Pentair sensor
+![IMG_3471](https://user-images.githubusercontent.com/1414156/138919477-00dadafb-c118-4bb7-875b-6dd875c09966.jpeg)
 
 
 ## External Components
